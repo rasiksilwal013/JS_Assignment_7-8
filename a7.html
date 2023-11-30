@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dis">
+    <font size="8" color="green">Final test lab</font><br /><br />
+    Number of rows: <input type="text" id="t1" /><br /><br />
+    Number of cols: <input type="text" id="t2" /><br /><br />
+</div>
+    <button id="b1" onclick="generateTable()">Generate Table</button><br /><br />
+
+    <button id="b2" onclick="addColumn()">Add Column</button>
+
+    <button id="b3" onclick="addRow()">Add Row</button>
+
+    <div id="tableContainer"></div>
+
+    <script language="javascript">
+      function generateTable() {
+        var rows = document.getElementById("t1").value;
+        var cols = document.getElementById("t2").value;
+
+        var table = document.createElement("table");
+
+        for (var i = 0; i < rows; i++) {
+          var row = table.insertRow(i);
+
+          for (var j = 0; j < cols; j++) {
+            var cell = row.insertCell(j);
+            cell.innerHTML = "Row " + (i + 1) + ", Col " + (j + 1);
+          }
+        }
+
+        table.style.border = "1px solid black"; // Add border to the table
+
+        // Hide unnecessary elements
+        document.getElementById("b1").style.display = "none";
+        document.getElementById("t1").style.display = "none";
+        document.getElementById("t2").style.display = "none";
+        document.getElementById("dis").style.display = "none";
+
+        document.getElementById("tableContainer").innerHTML = "";
+        document.getElementById("tableContainer").appendChild(table);
+      }
+
+      function addColumn() {
+        var table = document.querySelector("table");
+        var cols = table.rows[0].cells.length;
+
+        for (var i = 0; i < table.rows.length; i++) {
+          var cell = table.rows[i].insertCell(cols);
+          cell.innerHTML = "Row " + (i + 1) + ", Col " + (cols + 1);
+          cell.style.border = "1px solid black"; // Add border to the cell
+        }
+      }
+
+      function addRow() {
+        var table = document.querySelector("table");
+        var rows = table.rows.length;
+        var cols = table.rows[0].cells.length;
+
+        var newRow = table.insertRow(rows);
+
+        for (var j = 0; j < cols; j++) {
+          var cell = newRow.insertCell(j);
+          cell.innerHTML = "Row " + (rows + 1) + ", Col " + (j + 1);
+          cell.style.border = "1px solid black"; // Add border to the cell
+        }
+      }
+    </script>
+  </body>
+</html>
