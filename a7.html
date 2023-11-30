@@ -16,6 +16,7 @@
     </style>
   </head>
   <body>
+    <!--Wrapping the elements inside the div to remove when the table is generated-->
     <div id="dis">
     <font size="8" color="green">Final test lab</font><br /><br />
     Number of rows: <input type="text" id="t1" /><br /><br />
@@ -45,9 +46,9 @@
           }
         }
 
-        table.style.border = "1px solid black"; // Add border to the table
+        table.style.border = "1px solid black"; 
 
-        // Hide unnecessary elements
+        // wiping out other elements
         document.getElementById("b1").style.display = "none";
         document.getElementById("t1").style.display = "none";
         document.getElementById("t2").style.display = "none";
